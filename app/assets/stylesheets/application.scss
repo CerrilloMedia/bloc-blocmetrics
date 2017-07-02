@@ -16,3 +16,9 @@
  
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+#apps-listing {
+ tr:nth-child(odd) {
+  background: rgba(0,0,0,.2);
+ }
+}

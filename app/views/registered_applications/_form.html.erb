@@ -1,0 +1,13 @@
+<div class="panel-body">
+    <%= form_for [user,app] do |f| %>
+        <div class="form-group input-group col-xs-12">
+            <%= f.text_field :title, class: 'form-control pull-left', placeholder: "name or title", autofocus: true %>
+        </div>
+        <div class="form-group input-group col-xs-12">
+            <%= f.text_field :url, class: 'form-control pull-left', placeholder: "applicaiton url" %>
+        </div>
+        <span class="form-group">
+            <%= submit_tag "Add", class: 'btn btn-secondary btn-success' %>
+        </span>
+    <% end %>
+</div>

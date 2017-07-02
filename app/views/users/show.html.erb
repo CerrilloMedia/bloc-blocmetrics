@@ -1,0 +1,24 @@
+<div class="container-fluid">
+    <div class="jumbotron">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Registered Apps for <%= @user.email %>
+                </div>
+                <div class="panel-body">
+                    You currently have <%= pluralize(@apps.count, "registered application") %>
+                </div>
+                <div class="panel-footer">
+                    Add new application:
+                    <%= render partial: 'registered_applications/form', locals: { user: @user, app: RegisteredApplication.new } %>
+                </div>
+            </div>
+    </div>
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Applications List:
+            </div>
+            <%= render partial: 'registered_applications/apps_list', locals: { user: @user, apps: @apps } %>
+        </div>
+    </div>
+</div>
