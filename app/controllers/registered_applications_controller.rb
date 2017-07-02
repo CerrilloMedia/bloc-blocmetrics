@@ -1,7 +1,8 @@
 class RegisteredApplicationsController < ApplicationController
   
   def show
-    
+    @app = RegisteredApplication.find(params[:id])
+    @user = User.find(@app.user_id)
   end
 
   def create
@@ -12,11 +13,10 @@ class RegisteredApplicationsController < ApplicationController
     if @app.save
       flash[:notice] = "App added to list."
     else
-      flash[:alert] = "An error has occured. Please try again."
+      parse_errors(@app.errors)
     end
     
     redirect_to user_path(@user)
-    
   end
 
   def edit
@@ -37,8 +37,18 @@ class RegisteredApplicationsController < ApplicationController
     redirect_to user_path(@user)
   end
   
+  private
+  
   def app_params
     params.require(:registered_application).permit(:title, :url, :user_id)
+  end
+  
+  def parse_errors(errors)
+    flash[:alert] = []
+    errors.messages.map { |k,v|
+      flash[:alert] << "#{k} submitted #{v.first}"
+    }
+    flash[:alert]
   end
   
 end

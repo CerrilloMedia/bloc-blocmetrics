@@ -1,22 +1,28 @@
-<div class="panel-body">
+<div class="panel-body table-responsive">
     <table id="apps-list" class="table">
         <thead>
             <tr>
-                <th class="col-xs-12 col-sm-3">name</th>
-                <th class="col-xs-12 col-sm-8">url</th>
-                <th class="col-xs-12 col-sm-1">remove</th>
+                <th class="col-sm-3">name</th>
+                <th class="col-sm-8">url</th>
+                <th class="col-sm-1">dashboard</th>
+                <th class="col-sm-1">remove</th>
             </tr>
         </thead>
         <tbody>
             <% apps.each do |app| %>
             <tr class="apps-listing">
-                <td class="col-xs-12 col-sm-3"><%= app.title %></td>
-                <td class="col-xs-12 col-sm-8"><%= app.url %></td>
-                <td class="col-xs-12 col-sm-1 text-center">
-                    <%= link_to app, method: :delete, title: 'remove app', data: { confirm: "Are you sure you would like to remove this App?" } do %>
-                        <span class="glyphicon glyphicon-remove text-danger"></span>
-                    <% end %>
-                </td>
+                    <td><%= app.title %></td>
+                    <td><%= app.url %></td>
+                    <td class="text-center">
+                        <%= link_to registered_application_path(app.id) do %>
+                            <span class="glyphicon glyphicon-dashboard"></span>
+                        <% end %>
+                    </td>
+                    <td class="text-center">
+                        <%= link_to app, method: :delete, title: 'remove app', data: { confirm: "Are you sure you would like to remove this App?" } do %>
+                            <span class="glyphicon glyphicon-remove text-danger"></span>
+                        <% end %>
+                    </td>
             </tr>
         </tbody>
         <% end %>
