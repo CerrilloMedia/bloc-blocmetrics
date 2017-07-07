@@ -3,7 +3,8 @@
         <thead>
             <tr>
                 <th class="col-sm-3">name</th>
-                <th class="col-sm-8">url</th>
+                <th class="col-sm-7">url</th>
+                <th class="col-sm-1">events</th>
                 <th class="col-sm-1">dashboard</th>
                 <th class="col-sm-1">remove</th>
             </tr>
@@ -13,6 +14,7 @@
             <tr class="apps-listing">
                     <td><%= app.title %></td>
                     <td><%= app.url %></td>
+                    <td class="text-center"><%= app.events.count %></td>
                     <td class="text-center">
                         <%= link_to registered_application_path(app.id) do %>
                             <span class="glyphicon glyphicon-dashboard"></span>

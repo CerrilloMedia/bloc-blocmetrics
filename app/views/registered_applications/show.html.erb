@@ -1,12 +1,20 @@
-<div class="container-fluid">
-    <%= params %>
     <div class="row">
         <div class="col-sm-10 col-sm-offset-1">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Dashboard for <br><strong><%= @app.title %></strong>
+            <div class="panel-group">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Application Dashboard for: <strong><%= @app.title %></strong><br>
+                        URL: <%= link_to @app, title: "nope, not going anywhere bub" do %>
+                            <strong><%= @app.url %></strong><br>
+                        <% end %>
+                        Total Event Types: <strong><%= @events.count %></strong>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <%= render partial: 'events', locals: { events: @events } %>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>

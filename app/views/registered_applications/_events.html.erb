@@ -1,0 +1,12 @@
+<% events.each do |name, value| %>
+    <div class="col-sm-3">
+        <div class="panel panel-default">
+            <div class="panel-body text-center">
+                <h1><%= value.count %></h1>
+            </div>
+            <div class="panel-footer">
+                Name:<br><%= "#{name}" %>
+            </div>
+        </div>
+    </div>
+<% end %>

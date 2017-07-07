@@ -13,7 +13,7 @@
     <ul class="nav nav-tabs">
       <li>
         <% if user_signed_in? %>
-          <%= link_to "Bloc-metrics", @user, title: "home" %>
+          <%= link_to "Bloc-metrics", current_user, title: "dashboard" %>
         <% else %>
           <%= link_to "Bloc-metrics", root_path, title: "home" %>
         <% end %>
@@ -48,8 +48,8 @@
       </div>
     <% end %>
     
-  <%= yield %>
-  
+    <%= yield %>
+    
 </div>
 </body>
 </html>
