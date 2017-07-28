@@ -3,7 +3,7 @@ class RegisteredApplicationsController < ApplicationController
   def show
     @app = RegisteredApplication.find(params[:id])
     @user = User.find(@app.user_id)
-    puts @events = @app.events.group_by(&:name)
+    @events = @app.events.group_by(&:name)
   end
 
   def create
