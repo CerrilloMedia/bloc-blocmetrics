@@ -38,8 +38,9 @@ blocmetrics.report = function(eventName) {
   
 };
 
-$(document).ready(function() {
-  
+// Turbolinks overrides the normal page loading process, the event that this relies on will not be fired.
+// changing the usual Javascript/JQuery load methods requires TurboLinks to load completely.
+$(document).on('turbolinks:load', function () {
   $('.post-button').click( function(e) {
     var data_type = $(this).data();
     $.each(data_type, function(key, value) {
