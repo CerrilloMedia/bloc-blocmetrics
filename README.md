@@ -15,3 +15,37 @@ As a user, I want events associated with registered applications | 3
 As a developer, I want to receive incoming events in an API controller | 2
 As a user, I want to use JavaScript to capture client-side events in my application | 2
 As a user, I want to see a graph of events for each registered application | 3
+
+
+The following javascript was added to my application.js file for my portfolio appliction at [cm-ds.herokuapp.com](http://cm-ds.herokuapp.com).
+The click handler updates events from my index page letting me know which posts or portfolio-posts are clicked.
+
+__application.js__ for [cm-ds.herokuapp.com](http://cm-ds.herokuapp.com).
+```javascript
+
+var blocmetrics = {};
+
+blocmetrics.report = function(eventName) {
+  var event = { event: { name: eventName}};
+  
+  var request = new XMLHttpRequest();
+  
+  request.open("POST", "https://bloc-m4-specialization-cerrillomedia.c9users.io:8080/api/events", true);
+  
+  request.setRequestHeader('Content-Type', 'application/json');
+  
+  request.send(JSON.stringify(event));
+  
+};
+
+$(document).ready(function() {
+  
+  $('.post-button').click( function(e) {
+    var data_type = $(this).data();
+    $.each(data_type, function(key, value) {
+      blocmetrics.report(value);
+    });
+  });
+  
+});
+```
